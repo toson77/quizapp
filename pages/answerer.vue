@@ -105,7 +105,7 @@ export default {
       let sendjson = { name: this.userName, answer: [], quizid: this.id };
       this.$set(sendjson, "answer", answerArray);
       try {
-        await setDoc(doc(collection(db, "data")), sendjson);
+        await setDoc(doc(collection(db, this.id)), sendjson);
       } catch (e) {
         alert("firebase error");
         console.log(e);
