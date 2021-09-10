@@ -13,8 +13,15 @@
           monitor
         </v-card-title>
         <v-btn @click="getData">getData</v-btn>
-
       </v-card>
+      <template v-for="result, index in results">
+        <v-card :key="`first-${index}`">
+          <p>answerer:{{result.name}}</p>
+          <template v-for="element, index in result.answer">
+            <p :key="`second-${index}`">answer:{{element}}</p>
+          </template>
+        </v-card>
+      </template>
     </v-col>
   </v-row>
 </template>
@@ -26,21 +33,26 @@ import {
   getDoc,
   addDoc,
   collection,
-  getDocs
+  getDocs,
+  onSnapshot
 } from "firebase/firestore";
 export default {
   data() {
     return {
-      id: ""
+      id: "",
+      results: []
     };
   },
   methods: {
     async getData() {
       const docRef = collection(db, this.id);
       console.log(docRef);
-      const docSnap = await getDocs(docRef);
-      docSnap.forEach(doc => {
-        console.log(doc.id, " => ", doc.data());
+      const docSnap = onSnapshot(docRef, docs => {
+        this.results = [];
+        docs.forEach(doc => {
+          console.log(doc.id, " => ", doc.data());
+          this.results.push(doc.data());
+        });
       });
     }
   },
