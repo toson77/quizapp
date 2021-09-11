@@ -21,6 +21,16 @@
         </v-card-actions>
       </v-card>
       <br>
+      <client-only>
+        <v-card>
+          <apexchart
+            type="bar"
+            :options="chartOptions"
+            :series="chartData"
+          ></apexchart>
+        </v-card>
+      </client-only>
+      <br>
       <template v-for="result, index in results">
         <v-card :key="`first-${index}`">
           <v-card-title>answerer:{{result.name}}</v-card-title>
@@ -66,7 +76,21 @@ export default {
   data() {
     return {
       id: "",
-      results: []
+      results: [],
+      chartOptions: {
+        chart: {
+          id: "vuechart-example"
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        }
+      },
+      chartData: [
+        {
+          name: "series-1",
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        }
+      ]
     };
   },
   methods: {
