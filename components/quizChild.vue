@@ -26,7 +26,11 @@ export default {
     onlyQuestions() {
       let results = {};
       for (const key in this.elements) {
-        if (key !== "answer" && key !== "question") {
+        if (
+          key !== "answer" &&
+          key !== "question" &&
+          this.elements[key] !== ""
+        ) {
           results[key] = this.elements[key];
         }
       }
@@ -43,6 +47,7 @@ export default {
         flg = false;
       }
       const resultObject = {
+        question: this.elements["question"],
         userSelect: this.userSelect,
         answer: this.answer,
         flag: flg

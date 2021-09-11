@@ -1,8 +1,6 @@
 <template>
   <div>
-    <p>{{jsonData}} </p>
     <br>
-    <p>{{questions}}</p>
     <template v-for="elements,index in jsonData">
       <quiz-child
         :elements="elements"
@@ -16,7 +14,6 @@
       color="primary"
       @click="displayResult()"
     >see result</v-btn>
-    <p>{{answerArray}}</p>
     <br>
     <template v-if="isDisplayResults">
       <template v-for="element, index in answerArray">

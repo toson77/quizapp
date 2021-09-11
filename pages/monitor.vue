@@ -8,19 +8,41 @@
       sm="8"
       md="6"
     >
-      <v-card class="logo py-4 d-flex justify-center">
-        <v-card-title class="headerline">
+      <v-card class=" py-4  justify-center text-center">
+        <v-card-title class="text-center">
           monitor
         </v-card-title>
-        <v-btn @click="getData">getData</v-btn>
+        <v-card-text class="text-h6">answerers:{{Object.keys(results).length}}</v-card-text>
+        <v-card-actions>
+          <v-btn
+            @click="getData"
+            v-show="false"
+          >getData</v-btn>
+        </v-card-actions>
       </v-card>
+      <br>
       <template v-for="result, index in results">
         <v-card :key="`first-${index}`">
-          <p>answerer:{{result.name}}</p>
+          <v-card-title>answerer:{{result.name}}</v-card-title>
           <template v-for="element, index in result.answer">
-            <p :key="`second-${index}`">answer:{{element}}</p>
+            <div
+              :key="`second-${index}`"
+              class="answer-element text-center"
+            >
+              <v-card-text class="text-h6">user-select:{{element.userSelect}}</v-card-text>
+              <v-card-text class="text-h6">answer:{{element.answer}}</v-card-text>
+              <v-icon
+                v-if="element.flag"
+                class="red-font symbol"
+              >&#12295;</v-icon>
+              <v-icon
+                v-else
+                class="red-font symbol"
+              >&#10006;</v-icon>
+            </div>
           </template>
         </v-card>
+        <br>
       </template>
     </v-col>
   </v-row>
@@ -59,6 +81,20 @@ export default {
   mounted() {
     //get query id
     this.id = this.$route.query.id;
+    //get data from firebase
+    this.getData();
   }
 };
 </script>
+<style scoped>
+.red-font {
+  color: red
+}
+.symbol {
+  font-size: 30px;
+}
+.answer-element {
+  padding-bottom: 20px;
+}
+
+</style>
