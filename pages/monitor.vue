@@ -29,6 +29,10 @@
               :key="`second-${index}`"
               class="answer-element text-center"
             >
+              <v-card-text
+                v-if="element.question"
+                class="text-h6 text-left"
+              >{{element.question}}</v-card-text>
               <v-card-text class="text-h6">user-select:{{element.userSelect}}</v-card-text>
               <v-card-text class="text-h6">answer:{{element.answer}}</v-card-text>
               <v-icon
