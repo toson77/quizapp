@@ -9,6 +9,7 @@
         @answerArray1="typeanswer"
         :key="`first-${index}`"
       ></quiz-child>
+      <br>
     </template>
     <v-btn
       color="primary"
@@ -26,13 +27,17 @@
           <p>You selected {{element.userSelect}}</p>
           <p>Answer is {{element.answer}}</p>
           <template v-if="element.flag">
-            <p>you correct</p>
+            <p class="red-font text-h6">you correct &#12295;</p>
           </template>
           <template v-else>
-            <p>you wrong</p>
+            <p class="text-h6">you wrong &#10006;</p>
           </template>
         </v-card>
       </template>
+      <v-btn
+        nuxt
+        to="/"
+      >fin</v-btn>
     </template>
   </div>
 </template>
@@ -91,5 +96,8 @@ export default {
 <style scoped>
 .red-font{
   color: red
+}
+.symbol {
+  font-size: 30px;
 }
 </style>

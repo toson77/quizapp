@@ -8,8 +8,6 @@
       sm="8"
       md="6"
     >
-      <v-card class="logo py-4 d-flex justify-center">
-      </v-card>
       <v-card>
         <v-card-title class="headline">
           Quiz
@@ -21,7 +19,7 @@
               v-model.trim="userName"
               label="UserName"
             ></v-text-field>
-            <p>get:{{apiurl}}</p>
+            <p v-show="false">get:{{apiurl}}</p>
             <li>Tap StartButton</li>
           </ol>
         </v-card-text>
@@ -38,7 +36,7 @@
         <p
           class="red-font"
           v-if="isDlError"
-        >error: Can't Download CSV Prease check id and Spreadsheets Sharing settings</p>
+        >error: Can't Download CSV Prease ask the questioner</p>
         <br>
       </v-card>
       <template v-if="jsonData.length">

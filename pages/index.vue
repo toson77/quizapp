@@ -16,15 +16,10 @@
         </v-card-title>
         <v-card-text>
           <ol>
-            <li>IDとUserNameを入力</li>
-            <p>https://docs.google.com/spreadsheets/d/<strong class="red-font">ID</strong>/edit#gid=0</p>
+            <li>Spread Sheet ID入力</li>
             <v-text-field
               v-model.trim="id"
               label="ID"
-            ></v-text-field>
-            <v-text-field
-              v-model.trim="userName"
-              label="UserName"
             ></v-text-field>
             <p>get:{{apiurl}}</p>
             <p>parse csv to json</p>
@@ -48,9 +43,18 @@
       </v-card>
       <template v-if="jsonData.length">
         <quiz :jsonData="jsonData"></quiz>
+        <nuxt-link
+          :to="{name:'monitor', query:{id: id}}"
+          class="text-h6"
+        >monitorURL</nuxt-link>
+        <nuxt-link
+          :to="{name:'answerer',query:{id: id}}"
+          class="text-h6"
+        >answererURL</nuxt-link>
       </template>
     </v-col>
   </v-row>
+
 </template>
 <script>
 export default {
@@ -59,12 +63,13 @@ export default {
       id: "1Hq_0DC48s1ZAIIVwYM8YmgQug3KGvk9Rc2S3t3qRBwQ",
       url: "",
       jsonData: {},
-      userName: "",
-      isDlError: false
+      isDlError: false,
+      monitorUrl: "",
+      panelistUrl: ""
     };
   },
-  methods: {},
   computed: {
+    /*must write template*/
     apiurl() {
       /*make dl csv url*/
       this.url =
@@ -99,6 +104,10 @@ export default {
     isEmpty(obj) {
       return !Object.keys(obj).length;
     }
+  },
+  mounted() {
+    //set ismaster in vuex
+    this.$store.commit("isMaster", true);
   }
 };
 </script>

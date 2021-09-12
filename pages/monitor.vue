@@ -72,7 +72,6 @@ import {
   getDocs,
   onSnapshot
 } from "firebase/firestore";
-import masterVue from "./master.vue";
 export default {
   data() {
     return {
