@@ -62,7 +62,7 @@
 export default {
   data() {
     return {
-      id: "1Hq_0DC48s1ZAIIVwYM8YmgQug3KGvk9Rc2S3t3qRBwQ",
+      id: "",
       url: "",
       jsonData: {},
       isDlError: false,

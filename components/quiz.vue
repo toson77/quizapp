@@ -16,8 +16,6 @@
       @click="fillCheck()"
       v-if="!isMaster"
     >see result</v-btn>
-    <p>{{isMaster}}</p>
-    <p>{{answerArray}}</p>
     <br>
     <p
       v-if="!ifFillAnswer"
