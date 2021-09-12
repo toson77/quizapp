@@ -10,14 +10,16 @@
         :key="`first-${index}`"
       ></quiz-child>
     </template>
-    <p>{{answerArray}}</p>
     <v-btn
       color="primary"
       @click="fillCheck()"
+      v-if="!isMaster"
     >see result</v-btn>
     <br>
-    <p>{{ifFillAnswer}}</p>
-    <p v-if="!ifFillAnswer">exist unanswered</p>
+    <p
+      v-if="!ifFillAnswer"
+      class="red-font"
+    >not answered</p>
     <template v-if="isDisplayResults">
       <template v-for="element, index in answerArray">
         <v-card :key="`second-${index}`">
@@ -58,6 +60,9 @@ export default {
   computed: {
     questions() {
       this.question = this.jsonData;
+    },
+    isMaster() {
+      return this.$store.getters["isMaster"];
     }
   },
   methods: {
@@ -70,6 +75,7 @@ export default {
       this.$emit("answerArray", this.answerArray);
     },
     fillCheck() {
+      //notselected exist return false
       for (let index in this.answerArray) {
         console.log(this.answerArray[index].notselected);
         if (this.answerArray[index].notselected) {
@@ -82,3 +88,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.red-font{
+  color: red
+}
+</style>

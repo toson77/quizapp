@@ -114,6 +114,8 @@ export default {
   mounted() {
     //get query id
     this.id = this.$route.query.id;
+    //set isMaster in vuex
+    this.$store.commit("isMaster", false);
   }
 };
 </script>

@@ -9,8 +9,7 @@
         :value="value"
       ></v-radio>
     </v-radio-group>
-    <p>userselect:{{userSelect}}</p>
-    <p>answer:{{answer}}</p>
+    <p v-if="isMaster">answer:{{answer}}</p>
   </v-card>
 </template>
 <script>
@@ -35,6 +34,9 @@ export default {
         }
       }
       return results;
+    },
+    isMaster() {
+      return this.$store.getters["isMaster"];
     }
   },
   watch: {

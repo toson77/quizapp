@@ -64,7 +64,7 @@ export default {
     };
   },
   computed: {
-    /*templateで呼び出さないと動かない*/
+    /*must write template*/
     apiurl() {
       /*make dl csv url*/
       this.url =
@@ -100,6 +100,10 @@ export default {
       return !Object.keys(obj).length;
     },
     makeUrl() {}
+  },
+  mounted() {
+    //set ismaster in vuex
+    this.$store.commit("isMaster", true);
   }
 };
 </script>
