@@ -46,10 +46,12 @@
         <nuxt-link
           :to="{name:'monitor', query:{id: id}}"
           class="text-h6"
+          target="_blank"
         >monitorURL</nuxt-link>
         <nuxt-link
           :to="{name:'answerer',query:{id: id}}"
           class="text-h6"
+          target="_blank"
         >answererURL</nuxt-link>
       </template>
     </v-col>
@@ -106,6 +108,7 @@ export default {
     }
   },
   mounted() {
+    console.log("index mounted");
     //set ismaster in vuex
     this.$store.commit("isMaster", true);
   }

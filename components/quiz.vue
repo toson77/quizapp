@@ -16,6 +16,8 @@
       @click="fillCheck()"
       v-if="!isMaster"
     >see result</v-btn>
+    <p>{{isMaster}}</p>
+    <p>{{answerArray}}</p>
     <br>
     <p
       v-if="!ifFillAnswer"
@@ -67,7 +69,7 @@ export default {
       this.question = this.jsonData;
     },
     isMaster() {
-      return this.$store.getters["isMaster"];
+      return this.$store.getters.isMaster;
     }
   },
   methods: {
