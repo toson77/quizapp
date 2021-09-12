@@ -72,6 +72,7 @@ import {
   getDocs,
   onSnapshot
 } from "firebase/firestore";
+import masterVue from "./master.vue";
 export default {
   data() {
     return {
@@ -79,16 +80,34 @@ export default {
       results: [],
       chartOptions: {
         chart: {
-          id: "vuechart-example"
+          stacked: true,
+          stackType: "100%"
         },
+
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+          categories: [],
+          tickPlacement: "on"
+        },
+        fill: {
+          opacity: 1
+        },
+        legend: {
+          position: "right",
+          offsetX: 0,
+          offsetY: 50
+        },
+        toolbar: {
+          show: false
         }
       },
       chartData: [
         {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
+          name: "correct",
+          data: []
+        },
+        {
+          name: "wrong",
+          data: []
         }
       ]
     };
@@ -98,12 +117,42 @@ export default {
       const docRef = collection(db, this.id);
       console.log(docRef);
       const docSnap = onSnapshot(docRef, docs => {
+        this.list_init(docs);
         this.results = [];
         docs.forEach(doc => {
           console.log(doc.id, " => ", doc.data());
+          this.makeChartData(doc.data());
           this.results.push(doc.data());
         });
       });
+    },
+    makeChartData(doc) {
+      let categories = [];
+      doc.answer.forEach((obj, index) => {
+        categories.push(`question${index + 1}`);
+        if (obj.flag) {
+          this.chartData[0].data[index] += 1;
+        } else {
+          this.chartData[1].data[index] += 1;
+        }
+      });
+      this.chartOptions.xaxis.categories = categories;
+      //forced update drawing
+      this.chartData[0].data.splice();
+      this.chartOptions.xaxis.categories.splice();
+      console.log(this.chartOptions.xaxis.categories);
+      console.log(this.chartData);
+    },
+    list_init(docs) {
+      let maxlength = 0;
+      docs.forEach(doc => {
+        if (doc.data().answer.length > maxlength) {
+          maxlength = doc.data().answer.length;
+        }
+      });
+      this.chartData[0].data = Array(maxlength).fill(0);
+      this.chartData[1].data = Array(maxlength).fill(0);
+      this.chartOptions.xaxis.categories = Array(length).fill("");
     }
   },
   mounted() {
