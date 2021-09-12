@@ -10,14 +10,11 @@
         :key="`first-${index}`"
       ></quiz-child>
     </template>
-    <p>{{answerArray}}</p>
     <v-btn
       color="primary"
-      @click="fillCheck()"
+      @click="displayResult()"
     >see result</v-btn>
     <br>
-    <p>{{ifFillAnswer}}</p>
-    <p v-if="!ifFillAnswer">exist unanswered</p>
     <template v-if="isDisplayResults">
       <template v-for="element, index in answerArray">
         <v-card :key="`second-${index}`">
@@ -42,17 +39,15 @@ export default {
   data() {
     return {
       answerArray: [],
-      isDisplayResults: false,
-      ifFillAnswer: true
+      isDisplayResults: false
     };
   },
-
   mounted() {
     //add unique key
 
     // make answerflgs
     for (const keys in this.jsonData) {
-      this.answerArray.push({ notselected: true });
+      this.answerArray.push({});
     }
   },
   computed: {
@@ -68,16 +63,6 @@ export default {
     displayResult() {
       this.isDisplayResults = true;
       this.$emit("answerArray", this.answerArray);
-    },
-    fillCheck() {
-      for (let index in this.answerArray) {
-        console.log(this.answerArray[index].notselected);
-        if (this.answerArray[index].notselected) {
-          return (this.ifFillAnswer = false);
-        }
-      }
-      this.displayResult();
-      return (this.ifFillAnswer = true);
     }
   }
 };

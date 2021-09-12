@@ -152,7 +152,7 @@ export default {
       });
       this.chartData[0].data = Array(maxlength).fill(0);
       this.chartData[1].data = Array(maxlength).fill(0);
-      this.chartOptions.xaxis.categories = Array(length).fill("");
+      this.chartOptions.xaxis.categories = Array(maxlength).fill("");
     }
   },
   mounted() {

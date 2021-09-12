@@ -16,13 +16,12 @@
         </v-card-title>
         <v-card-text>
           <ol>
-            <li>UserNameを入力</li>
+            <li>Input UserName</li>
             <v-text-field
               v-model.trim="userName"
               label="UserName"
             ></v-text-field>
             <p>get:{{apiurl}}</p>
-            <p>parse csv to json</p>
             <li>Tap StartButton</li>
           </ol>
         </v-card-text>
