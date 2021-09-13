@@ -72,7 +72,6 @@ export default {
   },
   methods: {
     typeanswer(val) {
-      console.log(val);
       this.answerArray = val;
     },
     displayResult() {
@@ -82,7 +81,6 @@ export default {
     fillCheck() {
       //notselected exist return false
       for (let index in this.answerArray) {
-        console.log(this.answerArray[index].notselected);
         if (this.answerArray[index].notselected) {
           return (this.ifFillAnswer = false);
         }

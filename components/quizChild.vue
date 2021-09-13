@@ -41,7 +41,6 @@ export default {
   },
   watch: {
     userSelect(newValue) {
-      console.log(newValue);
       let flg = false;
       if (this.answer === newValue) {
         flg = true;

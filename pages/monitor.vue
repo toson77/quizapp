@@ -114,12 +114,10 @@ export default {
   methods: {
     async getData() {
       const docRef = collection(db, this.id);
-      console.log(docRef);
       const docSnap = onSnapshot(docRef, docs => {
         this.list_init(docs);
         this.results = [];
         docs.forEach(doc => {
-          console.log(doc.id, " => ", doc.data());
           this.makeChartData(doc.data());
           this.results.push(doc.data());
         });
@@ -139,8 +137,6 @@ export default {
       //forced update drawing
       this.chartData[0].data.splice();
       this.chartOptions.xaxis.categories.splice();
-      console.log(this.chartOptions.xaxis.categories);
-      console.log(this.chartData);
     },
     list_init(docs) {
       let maxlength = 0;

@@ -8,7 +8,6 @@ export const getters = {
 }
 export const mutations = {
   isMaster (state, value) {
-    console.log({ value });
     state.isMaster = value;
   }
 }

@@ -114,7 +114,6 @@ export default {
     this.id = this.$route.query.id;
   },
   created() {
-    console.log("answerer created");
     //set isMaster in vuex
     this.$store.commit("isMaster", false);
   }
