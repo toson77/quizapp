@@ -3,6 +3,16 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+  env: {
+    apiKey: process.env.FB_API_KEY,
+    authDomain: process.env.FB_AUTH_DOMAIN,
+    projectId: process.env.FB_PROJECTID,
+    storageBucket: process.env.FB_STRAGE_BUCKET,
+    messagingSenderId: process.env.FB_MESSEGING_SENDER_ID,
+    appId: process.env.FB_APPID,
+    measurementId: process.env.FB_MEASUREMENT_ID
+
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
