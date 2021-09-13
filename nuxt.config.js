@@ -10,7 +10,9 @@ export default {
     storageBucket: process.env.FB_STRAGE_BUCKET,
     messagingSenderId: process.env.FB_MESSEGING_SENDER_ID,
     appId: process.env.FB_APPID,
-    measurementId: process.env.FB_MEASUREMENT_ID
+    measurementId: process.env.FB_MEASUREMENT_ID,
+    // https://shiodaifuku.io/articles/txEgArhm4Z2BOzrd0IKJ
+    baseUrl: process.env.LOCAL_URL
 
   },
 
