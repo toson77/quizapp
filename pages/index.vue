@@ -97,7 +97,6 @@ export default {
     },
     catchError(errors) {
       this.isDlError = true;
-      console.log(this.isDlError);
     },
     doStuff(data) {
       this.jsonData = data;
@@ -108,7 +107,6 @@ export default {
     }
   },
   mounted() {
-    console.log("index mounted");
     //set ismaster in vuex
     this.$store.commit("isMaster", true);
   }
