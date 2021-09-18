@@ -9,8 +9,6 @@
       md="6"
     >
       <v-card class="logo py-4 d-flex justify-center">
-      </v-card>
-      <v-card>
         <v-card-title class="headline">
           Making Quiz using spreadsheet!
         </v-card-title>
