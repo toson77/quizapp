@@ -14,6 +14,10 @@
         <v-card-title class="headline">
           Making Quiz using spreadsheet!
         </v-card-title>
+        <a
+          class="pl-4"
+          href="https://github.com/toson77/quizapp#quiz-app"
+        >How to use</a>
         <v-card-text>
           <ol>
             <li>Spread Sheet ID入力</li>
