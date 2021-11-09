@@ -1,12 +1,13 @@
 name: build_and_deploy_firebase
 on:
-  push:
-    branches: [main]
-
+  pull_request:
+  branches:
+    - main
+  types: [closed]
 jobs:
   build_and_deploy_firebase:
     runs-on: ubuntu-latest
-
+    if: github.event.pull_request.merged == true
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
