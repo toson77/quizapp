@@ -12,7 +12,7 @@
       </v-card>
       <v-card>
         <v-card-title class="headline">
-          Making Quiz using spreadsheet!
+          Making quiz using spreadsheet!
         </v-card-title>
         <a
           class="pl-4"
